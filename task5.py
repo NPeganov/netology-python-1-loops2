@@ -13,6 +13,16 @@ my_list = ['a', 'b', 'c', 'd', 'e', 'f']
 
 """
 
+
+def create_a_dict(my_list):
+    dictionary = my_list[-1]  # Прихраниваем значение самого "глубокого" элемента
+    for key in reversed(my_list[:-1]):
+        dictionary = {key: dictionary}  # Собираем словарь
+
+    return dictionary
+
+
 if __name__ == '__main__':
-    my_list = ['a', 'b', 'c', 'd', 'e', 'f']
-    
+    input_list = ['linux', 'ubuntu', 'fedora', 'windows']  # Как пример, но работает с любым
+
+    print(create_a_dict(input_list))
