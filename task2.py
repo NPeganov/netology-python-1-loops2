@@ -22,9 +22,9 @@ queries = [
 """
 
 
-def percent(tota, num):
-    return (100 * num) / tota
+def percent(total, num):
     # Считаем проценты
+    return (100 * num) / total
 
 
 def quantity_of_words(queries):
@@ -32,12 +32,13 @@ def quantity_of_words(queries):
     counter = {}
 
     for string in queries:
+        # Считаем кол-во слов в строке
         words_quantity.append(len(string.split()))
-    # Считаем кол-во слов в строке
 
     for elem in words_quantity:
+        # Получаем словарь с количеством слов в одной строке в качестве ключа
+        # и количеством строк с этим количеством слов в качестве значения
         counter[elem] = counter.get(elem, 0) + 1
-    # Получаем словарь с количеством слов в одной строке и количеством строк с этим количеством слов
 
     return counter
 
@@ -53,6 +54,8 @@ if __name__ == '__main__':
         'сериалы про спорт',
     ]
 
-    for key, value in quantity_of_words(queries).items():
-        print(f"Search queries containing {key} word(s):{round(percent(len(queries), value), 2)}%")
-        # Функция round() используется для округления
+    for key, value in sorted(quantity_of_words(queries).items()):
+        # Используем sorted(), чтобы отсортировать словарь по ключам
+        # Функция round() используется для округления, чтобы дробь не была слишком длинной
+        result = round(percent(len(queries), value), 2)
+        print(f"Search queries containing {key} word(s): {result}%")
