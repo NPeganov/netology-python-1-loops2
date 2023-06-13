@@ -23,31 +23,35 @@ results = {
 """
 
 
+ROI_INDEX = 'ROI'
+
+
 def ROI_calc(revenue, cost):
+    if cost == 0:
+        # Тут нужен exception и запись в лог. Но мы это пока не проходили, поэтому просто возвращаем 0
+        return 0
+
     return round(((revenue / cost) - 1) * 100, 2)
 
 
-def ROI_add(results):
-    for val in results.values():
-        val['ROI'] = ROI_calc(val['revenue'], val['cost'])
-
-    return results
+def ROI_add(to_add_roi):
+    for val in to_add_roi.values():
+        val[ROI_INDEX] = ROI_calc(val['revenue'], val['cost'])
 
 
-def output(results):
-    roi_added = ROI_add(results)
-    keys = sorted(roi_added.keys())
+def format_roi_output(to_add_roi):
+    ROI_add(to_add_roi)  # добавили ROI к исходному словарю
+    keys = sorted(to_add_roi.keys())
     last_key = keys[-1]
-    first_key = keys[0]
+    formatted_roi = "{"
     for key in keys:
-        output_str = f"'{key}': {roi_added.get(key)}"
-        if key == first_key:
-            print(f"{{{output_str},")
-        elif key != last_key:
-            print(f"{output_str},")
+        output_str = f"'{key}': {to_add_roi.get(key)}"
+        if key != last_key:
+            formatted_roi += f"{output_str},\n "
         else:
-            print(f"{output_str}}}")
-        # Здесь вывод будет в том же порядке, что и была дана переменная. В примере же вывод был в другом порядке
+            formatted_roi += f"{output_str}}}"
+
+    return formatted_roi
 
 
 if __name__ == '__main__':
@@ -59,4 +63,4 @@ if __name__ == '__main__':
         'twitter': {'revenue': 11, 'cost': 24},
     }
 
-    output(results)
+    print(format_roi_output(results))
