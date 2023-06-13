@@ -11,7 +11,10 @@ stats = {'facebook': 55, 'yandex': 115, 'vk': 120, 'google': 99, 'email': 42, 'o
 """
 
 
+def max_amount_of_sales(stats):
+    return max(stats, key=stats.get)
+
+
 if __name__ == '__main__':
     stats = {'facebook': 50, 'yandex': 18, 'vk': 140, 'google':64, 'email': 27, 'ok': 58}
-    max_amount_of_sales = max(stats, key=stats.get)
-    print(f"Maximum sales volume on the advertising channel: {max_amount_of_sales}")
+    print(f"Maximum sales volume on the advertising channel: {max_amount_of_sales(stats)}")
