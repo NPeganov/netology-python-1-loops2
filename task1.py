@@ -14,19 +14,19 @@ ids = {'user1': [213, 213, 213, 15, 213],
 
 """
 
-import numpy as np
 
+def unic_geo_tags(geo_tags):
+    vals = list(geo_tags.values())
+    result = []
+    for v in vals:
+        result.extend(v)
 
-def unic_geo_tags(ids):
-       vals = np.array(ids.values())
-       result = sum(vals.tolist(), [])
-
-       return set(np.array(result))
+    return set(result)
 
 
 if __name__ == '__main__':
-       ids = {'user1': [213, 213, 213, 15, 213],
-              'user2': [54, 54, 119, 119, 119],
-              'user3': [213, 98, 98, 35]}
+    ids = {'user1': [213, 213, 213, 15, 213],
+           'user2': [54, 54, 119, 119, 119],
+           'user3': [213, 98, 98, 35]}
 
-       print(f"Result: {unic_geo_tags(ids)}")
+    print(f"Result: {unic_geo_tags(ids)}")
