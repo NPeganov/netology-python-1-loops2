@@ -23,7 +23,7 @@ results = {
 """
 
 
-ROI_INDEX = 'ROI'
+ROI_KEY = 'ROI'
 
 
 def ROI_calc(revenue, cost):
@@ -36,7 +36,7 @@ def ROI_calc(revenue, cost):
 
 def ROI_add(to_add_roi):
     for val in to_add_roi.values():
-        val[ROI_INDEX] = ROI_calc(val['revenue'], val['cost'])
+        val[ROI_KEY] = ROI_calc(val['revenue'], val['cost'])
 
 
 def format_roi_output(to_add_roi):

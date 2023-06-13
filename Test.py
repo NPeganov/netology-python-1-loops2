@@ -1,5 +1,5 @@
 import unittest
-from task3 import format_roi_output, ROI_add, ROI_calc, ROI_INDEX
+from task3 import format_roi_output, ROI_add, ROI_calc, ROI_KEY
 
 
 class TestForTask3(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestForTask3(unittest.TestCase):
     def test_roi_addon(self):
         test_dict = {'foo': {'revenue': self.TEST_REVENUE, 'cost': self.TEST_COST_POSITIVE}}
         ROI_add(test_dict)
-        self.assertTrue(ROI_INDEX in test_dict.get('foo'))
+        self.assertTrue(ROI_KEY in test_dict.get('foo'))
 
     def test_roi_calc_positive(self):
         self.assertEqual(self.EXPECTED_ROI_POSITIVE, ROI_calc(self.TEST_REVENUE, self.TEST_COST_POSITIVE))
