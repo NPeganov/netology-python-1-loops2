@@ -14,4 +14,5 @@ my_list = ['a', 'b', 'c', 'd', 'e', 'f']
 """
 
 if __name__ == '__main__':
+    my_list = ['a', 'b', 'c', 'd', 'e', 'f']
     
