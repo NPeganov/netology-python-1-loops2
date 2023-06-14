@@ -57,45 +57,61 @@ cook_book = {
 """
 
 
+def is_repeated(recipe):
+    result_dict = {}
+    for val in recipe.values():
+        for elem in val:
+            key = elem['ingridient_name']
+            # Делаем проверку на повторение ингредиента в переменной
+            if key not in result_dict:
+                result_dict[key] = [elem['quantity'], elem['measure']]
+            else:
+                result_dict[key][0] += elem['quantity']
+
+    return result_dict
+
+
+def multiplying(multiplier, result_dict):
+    for _ in result_dict:
+        result_dict[_][0] *= multiplier
+
+    return result_dict
+
+
+def output(result_dict):
+    for key, value in result_dict.items():
+        string2 = [str(v) for v in value]
+        value = str(" ".join(string2))
+        result_string = f"{key.capitalize()}: {value}"
+        print(result_string)
+
+
 if __name__ == '__main__':
     cook_book = {
-        'салат': [
-            {'ingridient_name': 'сыр', 'quantity': 50, 'measure': 'гр'},
-            {'ingridient_name': 'томаты', 'quantity': 2, 'measure': 'шт'},
-            {'ingridient_name': 'огурцы', 'quantity': 20, 'measure': 'гр'},
-            {'ingridient_name': 'маслины', 'quantity': 10, 'measure': 'гр'},
-            {'ingridient_name': 'оливковое масло', 'quantity': 20, 'measure': 'мл'},
-            {'ingridient_name': 'салат', 'quantity': 10, 'measure': 'гр'},
-            {'ingridient_name': 'перец', 'quantity': 20, 'measure': 'гр'}
+      'салат': [
+         {'ingridient_name': 'сыр', 'quantity': 50, 'measure': 'гр'},
+         {'ingridient_name': 'томаты', 'quantity': 2, 'measure': 'шт'},
+         {'ingridient_name': 'огурцы', 'quantity': 20, 'measure': 'гр'},
+         {'ingridient_name': 'маслины', 'quantity': 10, 'measure': 'гр'},
+         {'ingridient_name': 'оливковое масло', 'quantity': 20, 'measure': 'мл'},
+         {'ingridient_name': 'салат', 'quantity': 10, 'measure': 'гр'},
+         {'ingridient_name': 'перец', 'quantity': 20, 'measure': 'гр'}
         ],
-        'пицца': [
-            {'ingridient_name': 'сыр', 'quantity': 20, 'measure': 'гр'},
-            {'ingridient_name': 'колбаса', 'quantity': 30, 'measure': 'гр'},
-            {'ingridient_name': 'бекон', 'quantity': 30, 'measure': 'гр'},
-            {'ingridient_name': 'оливки', 'quantity': 10, 'measure': 'гр'},
-            {'ingridient_name': 'томаты', 'quantity': 20, 'measure': 'гр'},
-            {'ingridient_name': 'тесто', 'quantity': 100, 'measure': 'гр'},
+      'пицца': [
+         {'ingridient_name': 'сыр', 'quantity': 20, 'measure': 'гр'},
+         {'ingridient_name': 'колбаса', 'quantity': 30, 'measure': 'гр'},
+         {'ingridient_name': 'бекон', 'quantity': 30, 'measure': 'гр'},
+         {'ingridient_name': 'оливки', 'quantity': 10, 'measure': 'гр'},
+         {'ingridient_name': 'томаты', 'quantity': 20, 'measure': 'гр'},
+         {'ingridient_name': 'тесто', 'quantity': 100, 'measure': 'гр'},
         ],
-        'лимонад': [
-            {'ingridient_name': 'лимон', 'quantity': 1, 'measure': 'шт'},
-            {'ingridient_name': 'вода', 'quantity': 200, 'measure': 'мл'},
-            {'ingridient_name': 'сахар', 'quantity': 10, 'measure': 'гр'},
-            {'ingridient_name': 'лайм', 'quantity': 20, 'measure': 'гр'},
+      'лимонад': [
+         {'ingridient_name': 'лимон', 'quantity': 1, 'measure': 'шт'},
+         {'ingridient_name': 'вода', 'quantity': 200, 'measure': 'мл'},
+         {'ingridient_name': 'сахар', 'quantity': 10, 'measure': 'гр'},
+         {'ingridient_name': 'лайм', 'quantity': 20, 'measure': 'гр'},
         ]
     }
 
-    person = int(input('Enter quantity of people: '))
-
-    # for item in cook_book:
-    #     print(item[0].capitalize())
-    #
-    #     for k, v in item:
-    #         pass
-    #
-    #     for line in item[1]:
-    #         ingridient, quantity, num = line
-    #         quantity = quantity * person
-    #
-    #         print(ingridient, quantity, num)
-    #
-    #     print('')
+    persons = int(input('Enter the quantity of persons: '))
+    output(multiplying(persons, is_repeated(cook_book)))
