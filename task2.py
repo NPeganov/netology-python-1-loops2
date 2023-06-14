@@ -22,7 +22,7 @@ queries = [
 """
 
 
-def percent(total, num):
+def percent_culc(total, num):
     # Считаем проценты
     return (100 * num) / total
 
@@ -45,17 +45,17 @@ def quantity_of_words(queries):
 
 if __name__ == '__main__':
     queries = [
-        'смотреть сериалы онлайн',
-        'новости спорта',
-        'афиша кино',
-        'курс доллара',
-        'сериалы этим летом',
-        'курс по питону',
-        'сериалы про спорт',
-    ]
+            'смотреть сериалы онлайн',
+            'новости спорта',
+            'афиша кино',
+            'курс доллара',
+            'сериалы этим летом',
+            'курс по питону',
+            'сериалы про спорт'
+        ]
 
     for key, value in sorted(quantity_of_words(queries).items()):
         # Используем sorted(), чтобы отсортировать словарь по ключам
         # Функция round() используется для округления, чтобы дробь не была слишком длинной
-        result = round(percent(len(queries), value), 2)
+        result = round(percent_culc(len(queries), value), 2)
         print(f"Search queries containing {key} word(s): {result}%")
