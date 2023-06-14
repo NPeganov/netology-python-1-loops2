@@ -12,6 +12,7 @@ stats = {'facebook': 55, 'yandex': 115, 'vk': 120, 'google': 99, 'email': 42, 'o
 
 
 def max_amount_of_sales(sales_amount):
+    # Мы твёрдо верим, что входные данные соответствуют нужной нам структуре, в противном случае программа упадёт
     return max(sales_amount, key=sales_amount.get)
 
 
