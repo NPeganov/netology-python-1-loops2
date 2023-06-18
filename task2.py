@@ -22,7 +22,7 @@ queries = [
 """
 
 
-def percent_culc(total, num):
+def percent_calc(total, num):
     # Считаем проценты
     return (100 * num) / total
 
@@ -57,5 +57,5 @@ if __name__ == '__main__':
     for key, value in sorted(quantity_of_words(queries).items()):
         # Используем sorted(), чтобы отсортировать словарь по ключам
         # Функция round() используется для округления, чтобы дробь не была слишком длинной
-        result = round(percent_culc(len(queries), value), 2)
+        result = round(percent_calc(len(queries), value), 2)
         print(f"Search queries containing {key} word(s): {result}%")

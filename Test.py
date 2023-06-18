@@ -1,5 +1,5 @@
 import unittest
-from task2 import quantity_of_words, percent_culc
+from task2 import quantity_of_words, percent_calc
 
 
 class TestFotTask2(unittest.TestCase):
@@ -68,15 +68,15 @@ class TestFotTask2(unittest.TestCase):
         self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST4, quantity_of_words(self.INPUT_TASK2_TEST4))
 
     def test5_for_percent_func(self):
-        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST5, percent_culc(self.INPUT_TASK2_TEST5_TOTAL,
+        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST5, percent_calc(self.INPUT_TASK2_TEST5_TOTAL,
                                                                         self.INPUT_TASK2_TEST5_NUM))
 
     def test6_for_percent_func(self):
-        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST6, percent_culc(self.INPUT_TASK2_TEST6_TOTAL,
+        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST6, percent_calc(self.INPUT_TASK2_TEST6_TOTAL,
                                                                         self.INPUT_TASK2_TEST6_NUM))
 
     def test7_for_percent_func(self):
-        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST7, percent_culc(self.INPUT_TASK2_TEST7_TOTAL,
+        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST7, percent_calc(self.INPUT_TASK2_TEST7_TOTAL,
                                                                         self.INPUT_TASK2_TEST7_NUM))
 
 
