@@ -182,7 +182,8 @@ class TestForTask6(unittest.TestCase):
 Сахар: 30 гр 
 Лайм: 60 гр 
 """
-    INPUT_TASK2_TEST5 = {('сыр', 'гр'): 210,
+    INPUT_TASK2_TEST5 = {
+                         ('сыр', 'гр'): 210,
                          ('томаты', 'шт'): 6,
                          ('огурцы', 'гр'): 60,
                          ('маслины', 'гр'): 30,
@@ -197,7 +198,8 @@ class TestForTask6(unittest.TestCase):
                          ('лимон', 'шт'): 3,
                          ('вода', 'мл'): 600,
                          ('сахар', 'гр'): 30,
-                         ('лайм', 'гр'): 60}
+                         ('лайм', 'гр'): 60
+                         }
 
     EXPECTED_RESULT_TASK2_TEST6 = """Сыр: 70 гр 
 Томаты: 2 шт 
@@ -216,7 +218,8 @@ class TestForTask6(unittest.TestCase):
 Сахар: 10 гр 
 Лайм: 20 гр 
 """
-    INPUT_TASK2_TEST6 = {('сыр', 'гр'): 70,
+    INPUT_TASK2_TEST6 = {
+                         ('сыр', 'гр'): 70,
                          ('томаты', 'шт'): 2,
                          ('огурцы', 'гр'): 20,
                          ('маслины', 'гр'): 10,
@@ -231,7 +234,8 @@ class TestForTask6(unittest.TestCase):
                          ('лимон', 'шт'): 1,
                          ('вода', 'мл'): 200,
                          ('сахар', 'гр'): 10,
-                         ('лайм', 'гр'): 20}
+                         ('лайм', 'гр'): 20
+                         }
 
     EXPECTED_RESULT_TASK2_TEST7 = """Сыр: 350 гр 
 Томаты: 10 шт 
@@ -250,7 +254,8 @@ class TestForTask6(unittest.TestCase):
 Сахар: 50 гр 
 Лайм: 100 гр 
 """
-    INPUT_TASK2_TEST7 = {('сыр', 'гр'): 350,
+    INPUT_TASK2_TEST7 = {
+                         ('сыр', 'гр'): 350,
                          ('томаты', 'шт'): 10,
                          ('огурцы', 'гр'): 100,
                          ('маслины', 'гр'): 50,
@@ -265,7 +270,8 @@ class TestForTask6(unittest.TestCase):
                          ('лимон', 'шт'): 5,
                          ('вода', 'мл'): 1000,
                          ('сахар', 'гр'): 50,
-                         ('лайм', 'гр'): 100}
+                         ('лайм', 'гр'): 100
+                         }
 
     def test1_for_forming_new_dict(self):
         self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST1, forming_new_dict(self.INPUT_TASK2_TEST1))
