@@ -56,34 +56,38 @@ cook_book = {
 
 """
 
+from common.positive_digital_input import positive_digital_input
 
-def is_repeated(recipe):
+
+def forming_new_dict(cook_book):
     result_dict = {}
-    for val in recipe.values():
-        for elem in val:
-            key = elem['ingridient_name']
+    for recipe in cook_book.values():
+        for elem in recipe:
+            ingridient_name = elem['ingridient_name']
+            measure = elem['measure']
+            ingridient_and_measure = (ingridient_name, measure)
+            quantity = elem['quantity']
             # Делаем проверку на повторение ингредиента в переменной
-            if key not in result_dict:
-                result_dict[key] = [elem['quantity'], elem['measure']]
-            else:
-                result_dict[key][0] += elem['quantity']
+            if ingridient_and_measure not in result_dict:
+                result_dict.setdefault(ingridient_and_measure, quantity)
+            elif ingridient_and_measure in result_dict:
+                result_dict[ingridient_and_measure] += quantity
 
     return result_dict
 
 
 def multiplying(multiplier, result_dict):
     for _ in result_dict:
-        result_dict[_][0] *= multiplier
+        result_dict[_] *= multiplier
 
     return result_dict
 
 
 def output(result_dict):
+    result_string = str()
     for key, value in result_dict.items():
-        string2 = [str(v) for v in value]
-        value = str(" ".join(string2))
-        result_string = f"{key.capitalize()}: {value}"
-        print(result_string)
+        result_string += f"{key[0].capitalize()}: {value} {key[1]} \n"
+    return result_string
 
 
 if __name__ == '__main__':
@@ -113,5 +117,5 @@ if __name__ == '__main__':
         ]
     }
 
-    persons = int(input('Enter the quantity of persons: '))
-    output(multiplying(persons, is_repeated(cook_book)))
+    persons = positive_digital_input('Enter the quantity of persons: ')
+    print(output(multiplying(persons, forming_new_dict(cook_book))))
