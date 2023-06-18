@@ -16,7 +16,7 @@ ids = {'user1': [213, 213, 213, 15, 213],
 
 
 def unic_geo_tags(geo_tags):
-    vals = list(geo_tags.values())
+    vals = geo_tags.values()
     result = []
     for v in vals:
         result.extend(v)
