@@ -3,6 +3,7 @@ import unittest
 from task1 import unic_geo_tags
 from task2 import quantity_of_words, percent_calc
 from task3 import format_roi_output, ROI_add, ROI_calc, ROI_KEY, REVENUE, COST
+from task4 import max_amount_of_sales
 from task5 import create_a_dict
 
 
@@ -144,6 +145,26 @@ class TestForTask3(unittest.TestCase):
 
     def test_roi_calc_negative(self):
         self.assertEqual(self.EXPECTED_ROI_NEGATIVE, ROI_calc(self.TEST_REVENUE, self.TEST_COST_NEGATIVE))
+        
+        
+class TestForTask4(unittest.TestCase):
+    EXPECTED_RESULT_TASK4_TEST1 = 'vk'
+    INPUT_TASK4_TEST1 = {'facebook': 55, 'yandex': 115, 'vk': 120, 'google': 99, 'email': 42, 'ok': 98}
+
+    EXPECTED_RESULT_TASK4_TEST2 = 'ok'
+    INPUT_TASK4_TEST2 = {'facebook': 550, 'yandex': 118, 'vk': 10, 'google': 94, 'email': 427, 'ok': 958}
+
+    EXPECTED_RESULT_TASK4_TEST3 = 'vk'
+    INPUT_TASK4_TEST3 = {'facebook': 50, 'yandex': 18, 'vk': 140, 'google': 64, 'email': 27, 'ok': 58}
+
+    def test1(self):
+        self.assertEqual(self.EXPECTED_RESULT_TASK4_TEST1, max_amount_of_sales(self.INPUT_TASK4_TEST1))
+
+    def test2(self):
+        self.assertEqual(self.EXPECTED_RESULT_TASK4_TEST2, max_amount_of_sales(self.INPUT_TASK4_TEST2))
+
+    def test3(self):
+        self.assertEqual(self.EXPECTED_RESULT_TASK4_TEST3, max_amount_of_sales(self.INPUT_TASK4_TEST3))
         
 
 class TestForTask5(unittest.TestCase):
