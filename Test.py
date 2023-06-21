@@ -1,5 +1,5 @@
 import unittest
-from task3 import format_roi_output, ROI_add, ROI_calc, ROI_KEY
+from task3 import format_roi_output, ROI_add, ROI_calc, ROI_KEY, REVENUE, COST
 
 
 class TestForTask3(unittest.TestCase):
@@ -27,7 +27,7 @@ class TestForTask3(unittest.TestCase):
         self.assertEqual(format_roi_output(self.INPUT_TASK3_TEST1), self.EXPECTED_RESULT_TASK3_TEST1)
 
     def test_roi_addon(self):
-        test_dict = {'foo': {'revenue': self.TEST_REVENUE, 'cost': self.TEST_COST_POSITIVE}}
+        test_dict = {'foo': {REVENUE: self.TEST_REVENUE, COST: self.TEST_COST_POSITIVE}}
         ROI_add(test_dict)
         self.assertTrue(ROI_KEY in test_dict.get('foo'))
 
