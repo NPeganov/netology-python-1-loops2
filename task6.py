@@ -59,7 +59,9 @@ cook_book = {
 from common.positive_digital_input import positive_digital_input
 
 
-def uniting(cook_book):
+def uniqify_ingridients(cook_book):
+    # Формируем новый словарь, где ключом является кортеж, в котором первый элемент - название ингридиента, а второй -
+    # единица измерения, а значением является количество
     NAME = 'ingridient_name'
     MEASURE = 'measure'
     QUANTITY = 'quantity'
@@ -79,11 +81,11 @@ def uniting(cook_book):
     return result_dict
 
 
-def increasing(multiplier, result_dict):
-    for _ in result_dict:
-        result_dict[_] *= multiplier
+def qnty_calc(multiplier, ingridients_dict):
+    for _ in ingridients_dict:
+        ingridients_dict[_] *= multiplier
 
-    return result_dict
+    return ingridients_dict
 
 
 def output(result_dict):
@@ -122,4 +124,4 @@ if __name__ == '__main__':
     }
 
     persons = positive_digital_input('Enter the quantity of persons: ')
-    print(output(increasing(persons, uniting(cook_book))))
+    print(output(qnty_calc(persons, uniqify_ingridients(cook_book))))

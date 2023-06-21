@@ -1,5 +1,5 @@
 import unittest
-from task6 import uniting, increasing, output
+from task6 import uniqify_ingridients, qnty_calc, output
 
 
 class TestForTask6(unittest.TestCase):
@@ -274,18 +274,18 @@ class TestForTask6(unittest.TestCase):
                          }
 
     def test1_for_forming_new_dict(self):
-        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST1, uniting(self.INPUT_TASK2_TEST1))
+        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST1, uniqify_ingridients(self.INPUT_TASK2_TEST1))
 
     def test2_for_forming_new_dict(self):
-        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST2, uniting(self.INPUT_TASK2_TEST2))
+        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST2, uniqify_ingridients(self.INPUT_TASK2_TEST2))
 
     def test3_for_multiplying(self):
-        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST3, increasing(self.INPUT_TASK2_TEST3_MULTIPLIER,
-                                                                      self.INPUT_TASK2_TEST3_RESULT_DICT))
+        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST3, qnty_calc(self.INPUT_TASK2_TEST3_MULTIPLIER,
+                                                                     self.INPUT_TASK2_TEST3_RESULT_DICT))
 
     def test4_for_multiplying(self):
-        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST4, increasing(self.INPUT_TASK2_TEST4_MULTIPLIER,
-                                                                      self.INPUT_TASK2_TEST4_RESULT_DICT))
+        self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST4, qnty_calc(self.INPUT_TASK2_TEST4_MULTIPLIER,
+                                                                     self.INPUT_TASK2_TEST4_RESULT_DICT))
 
     def test5_for_output(self):
         self.assertEqual(self.EXPECTED_RESULT_TASK2_TEST5, output(self.INPUT_TASK2_TEST5))

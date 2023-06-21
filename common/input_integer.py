@@ -1,7 +1,7 @@
 import re
 
 
-def digital_input_2(text):
+def input_integer(text):
     regex = r'[-]?\d+'
     result = None
     while result is None:
