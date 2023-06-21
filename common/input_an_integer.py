@@ -1,12 +1,16 @@
-def digital_input(text):
+import re
+
+
+def digital_input_2(text):
+    regex = r'[-]?\d+'
     result = None
     while result is None:
         result = input(text)
-        if result.isdigit():
+        if re.fullmatch(regex, result):
             result = int(result)
             break
 
-        print('Wrong enter')
+        print('Wrong enter, a number expected')
         result = None
 
     return result

@@ -59,24 +59,27 @@ cook_book = {
 from common.positive_digital_input import positive_digital_input
 
 
-def forming_new_dict(cook_book):
+def uniting(cook_book):
+    NAME = 'ingridient_name'
+    MEASURE = 'measure'
+    QUANTITY = 'quantity'
     result_dict = {}
     for recipe in cook_book.values():
-        for elem in recipe:
-            ingridient_name = elem['ingridient_name']
-            measure = elem['measure']
-            ingridient_and_measure = (ingridient_name, measure)
-            quantity = elem['quantity']
+        for ingridient in recipe:
+            name = ingridient[NAME]
+            measure = ingridient[MEASURE]
+            name_and_measure = (name, measure)
+            quantity = ingridient[QUANTITY]
             # Делаем проверку на повторение ингредиента в переменной
-            if ingridient_and_measure not in result_dict:
-                result_dict.setdefault(ingridient_and_measure, quantity)
-            elif ingridient_and_measure in result_dict:
-                result_dict[ingridient_and_measure] += quantity
+            if name_and_measure not in result_dict:
+                result_dict[name_and_measure] = quantity
+            else:
+                result_dict[name_and_measure] += quantity
 
     return result_dict
 
 
-def multiplying(multiplier, result_dict):
+def increasing(multiplier, result_dict):
     for _ in result_dict:
         result_dict[_] *= multiplier
 
@@ -85,8 +88,9 @@ def multiplying(multiplier, result_dict):
 
 def output(result_dict):
     result_string = str()
-    for key, value in result_dict.items():
-        result_string += f"{key[0].capitalize()}: {value} {key[1]} \n"
+    for name_and_measure_key, value in result_dict.items():
+        name, measure = name_and_measure_key
+        result_string += f"{name.capitalize()}: {value} {measure} \n"
     return result_string
 
 
@@ -118,4 +122,4 @@ if __name__ == '__main__':
     }
 
     persons = positive_digital_input('Enter the quantity of persons: ')
-    print(output(multiplying(persons, forming_new_dict(cook_book))))
+    print(output(increasing(persons, uniting(cook_book))))
